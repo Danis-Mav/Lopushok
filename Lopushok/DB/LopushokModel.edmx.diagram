@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="251ce3560d2d401bbd1c7e076db27a48" Name="Diagram1">
+        <EntityTypeShape EntityType="LopushokModel.Agent" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="LopushokModel.Material" Width="1.5" PointX="3" PointY="11.25" />
+        <EntityTypeShape EntityType="LopushokModel.MaterialType" Width="1.5" PointX="0.75" PointY="10.875" />
+        <EntityTypeShape EntityType="LopushokModel.Product" Width="1.5" PointX="3" PointY="3.125" />
+        <EntityTypeShape EntityType="LopushokModel.ProductMaterial" Width="1.5" PointX="5.25" PointY="3.75" />
+        <EntityTypeShape EntityType="LopushokModel.ProductSale" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="LopushokModel.ProductType" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="LopushokModel.Sale" Width="1.5" PointX="3" PointY="7.625" />
+        <EntityTypeShape EntityType="LopushokModel.Unit" Width="1.5" PointX="0.75" PointY="13.25" />
+        <EntityTypeShape EntityType="LopushokModel.Workshop" Width="1.5" PointX="0.75" PointY="4" />
+        <AssociationConnector Association="LopushokModel.FK_Sale_Agent" />
+        <AssociationConnector Association="LopushokModel.FK_Material_MaterialType" />
+        <AssociationConnector Association="LopushokModel.FK_Material_Unit" />
+        <AssociationConnector Association="LopushokModel.FK_ProductMaterial_Material" />
+        <AssociationConnector Association="LopushokModel.FK_Product_ProductType" />
+        <AssociationConnector Association="LopushokModel.FK_Product_Workshop" />
+        <AssociationConnector Association="LopushokModel.FK_ProductMaterial_Product" />
+        <AssociationConnector Association="LopushokModel.FK_ProductSale_Product" />
+        <AssociationConnector Association="LopushokModel.FK_ProductSale_Sale" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

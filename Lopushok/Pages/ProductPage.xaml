@@ -1,0 +1,105 @@
+﻿<Page x:Class="Lopushok.Pages.ProductPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Lopushok.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title=""
+      FontFamily="Gabriola">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Ариткул" Grid.Row="0"/>
+        <TextBox x:Name="tbId" Text="{Binding Product.Article}" Grid.Row="0" Grid.Column="1"/>
+        
+        <TextBlock Text="Наименование" Grid.Row="1"/>
+        <TextBox x:Name="tbName" Text="{Binding Product.Name}" Grid.Row="1" Grid.Column="1"/>
+        
+        <TextBlock Text="Количество человек" Grid.Row="2"/>
+        <TextBox x:Name="tbManCount" Text="{Binding Product.ManForProduction}" Grid.Row="2" Grid.Column="1"/>
+
+        <TextBlock Text="Описание" Grid.Row="3"/>
+        <TextBox x:Name="tbDscription" Text="{Binding Product.Description}" Grid.Row="3" Grid.Column="1" Grid.RowSpan="2"
+                 VerticalAlignment="Stretch" TextWrapping="Wrap" AcceptsReturn="True"
+                 VerticalScrollBarVisibility="Auto"/>
+
+        <TextBlock Text="Цех" Grid.Column="2" Grid.Row="0"/>
+        <ComboBox x:Name="cbWorkshop" Grid.Column="3" Grid.Row="0" 
+                  ItemsSource="{Binding Workshops}"
+                  SelectedItem="{Binding Product.Workshop}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        
+        <TextBlock Text="Тип продукта" Grid.Column="2" Grid.Row="1"/>
+        <ComboBox x:Name="cbProductType" Grid.Column="3" Grid.Row="1"
+                  ItemsSource="{Binding ProductTypes}"
+                  SelectedItem="{Binding Product.ProductType}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <ListView x:Name="lvMaterials" ItemsSource="{Binding Product.ProductMaterials}" MaxWidth="300"
+                  Grid.Row="2" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="2" Margin="15"
+                  SelectionChanged="lvMaterials_SelectionChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="20" Text="{Binding Material.Name}"/>
+                        <TextBlock HorizontalAlignment="Right" Margin="10 0" VerticalAlignment="Center">
+                            <TextBox Text="{Binding MaterialQuantity}" Background="#CEFFF9"
+                                     VerticalContentAlignment="Bottom" FontSize="24" Height="30"/>
+                            <Run Text="шт"/>
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <TextBlock Text="Материал" Grid.Column="2" Grid.Row="4" HorizontalAlignment="Right"/>
+        <ComboBox x:Name="cbMaterial" Grid.Column="3" Grid.Row="4" ItemsSource="{Binding Materials}" MinWidth="100"
+                  FontSize="24"
+                  IsTextSearchEnabled="False" IsEditable="True"
+                  TextBoxBase.TextChanged="cbMaterial_TextChanged"
+                  SelectionChanged="cbMaterial_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" HorizontalAlignment="Left"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Image x:Name="imgProduct" Source="{Binding Product.Image}" Grid.Row="0" Grid.Column="4" Grid.RowSpan="4" MinWidth="200" MaxWidth="300"/>
+        <Button x:Name="btnAddImage" Content="Выбрать изображение" Grid.Row="4" Grid.Column="4"
+                VerticalAlignment="Center" Click="btnAddImage_Click" Margin="5 0"/>
+
+        <Button x:Name="btnDelete" Content="Удалить" Grid.Row="5"
+                HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnDelete_Click"/>
+
+        <Button x:Name="btnSave" Content="Сохранить" Grid.Row="5" Grid.ColumnSpan="5"
+                HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnSave_Click"/>
+    </Grid>
+</Page>
